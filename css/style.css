@@ -1,0 +1,9 @@
+body {
+  height: 100vh;
+  width: 100vw;
+}
+div {
+  background-color: blue;
+  width: 9vw;
+  display: inline-block;
+}
