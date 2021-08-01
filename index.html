@@ -41,6 +41,25 @@
     for (let i = 0; i < array1.length; i++) {
       document.getElementById(''+(i+1)).style.height = array1[i] + 'vh';
     }
+
+    function bubbleSort(array) {
+      let hasChanged = true;
+      do {
+        let numberOfChanged = 0;
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] > array[i+1]) {
+            let firstValue = array[i];
+            array[i] = array[i+1];
+            array[i+1] = firstValue;
+            numberOfChanged++;
+          }
+        }
+        if (numberOfChanged === 0) {
+          hasChanged = false;
+        }
+      } while(hasChanged);
+      return array;
+    }
   </script>
   </body>
 </html>
