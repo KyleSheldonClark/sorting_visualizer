@@ -73,12 +73,14 @@
       for (let j = low; j < high; j++) {
         if (array[j] < pivot) {
           i++;
-          swap(i, j, array[i], array[j]);
+          counter++;
+          console.log(j);
+          swap(array, i, j, array[i], array[j]);
         }
       }
 
       //place pivot at index + 1 of last element smaller than pivot
-      swap(i+1, high, array[i+1], array[high]);
+      swap(array, i+1, high, array[i+1], array[high]);
       //return new pivot index
       return (i+1);
     }
