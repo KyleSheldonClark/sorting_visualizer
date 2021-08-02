@@ -7,7 +7,7 @@
   </head>
   <body>
     <nav>
-      <button type="button" name="button" class="sort">Sort</button>
+      <button type="button" name="button" class="bubble-sort">Bubble Sort</button>
     </nav>
     <section id="bars">
 
@@ -63,7 +63,24 @@
       }
     }
 
+    function partition(array, low, high) {
+      //set pivot as last element in the partition
+      let pivot = array[high];
+      let i = low - 1;
 
+      //for every element in the partition if the element is smaller than the pivot swap with i
+      for (let j = low; j < high; j++) {
+        if (array[j] < pivot) {
+          i++;
+          swap(i, j, array[i], array[j]);
+        }
+      }
+
+      //place pivot at index + 1 of last element smaller than pivot
+      swap(i+1, high, array[i+1], array[high]);
+      //return new pivot index
+      return (i+1);
+    }
 
     function swap(array, firstItemIndex, secondItemIndex, firstItemValue, secondItemValue) {
       //swap element values in array
@@ -85,7 +102,7 @@
     }
 
     createArray();
-    document.querySelector('.sort').addEventListener('click', () => {
+    document.querySelector('.bubble-sort').addEventListener('click', () => {
       bubbleSort(array1);
     });
   </script>
