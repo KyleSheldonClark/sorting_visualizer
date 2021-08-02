@@ -8,6 +8,7 @@
   <body>
     <nav>
       <button type="button" name="button" class="bubble-sort">Bubble Sort</button>
+      <button type="button" name="button" class="quick-sort">Quick Sort</button>
     </nav>
     <section id="bars">
 
@@ -104,6 +105,9 @@
     createArray();
     document.querySelector('.bubble-sort').addEventListener('click', () => {
       bubbleSort(array1);
+    });
+    document.querySelector('.quick-sort').addEventListener('click', () => {
+      quickSort(array1, 0, array1.length-1);
     });
   </script>
   </body>
