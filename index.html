@@ -42,6 +42,7 @@
       </div>
     </section>
   <script type="text/javascript">
+    let counter = 1;
     let array1 = [44, 31, 32, 78, 72, 59, 95, 71, 89, 98];
     for (let i = 0; i < array1.length; i++) {
       document.getElementById(''+(i+1)).style.height = array1[i] + '%';
@@ -51,7 +52,6 @@
       let hasChanged = true;
       //iterate over array and sort until one full iteration has occured where no elements have been changed
       do {
-        let counter = 100;
         let numberOfChanged = 0;
         //for every element in the array if the current element's value is greater than the value of the next element swap positions in the array
         for (let i = 0; i < array.length; i++) {
@@ -61,6 +61,7 @@
             let firstItemIndex = i;
             let secondItemIndex = i+1;
             swap(array, firstItemIndex, secondItemIndex, firstValue, secondValue);
+            counter++;
             numberOfChanged++;
           }
         }
@@ -76,10 +77,17 @@
     function swap(array, firstItemIndex, secondItemIndex, firstItemValue, secondItemValue) {
       array[firstItemIndex] = secondItemValue;
       array[secondItemIndex] = firstItemValue;
-      document.getElementById(''+(firstItemIndex+1)).style['background-color'] = 'red';
-      document.getElementById(''+(secondItemIndex+1)).style['background-color'] = 'red';
-      document.getElementById(''+(firstItemIndex+1)).style.height = secondItemValue + '%';
-      document.getElementById(''+(secondItemIndex+1)).style.height = firstItemValue + '%';
+      setTimeout(() => {
+        document.getElementById(''+(firstItemIndex+1)).style['background-color'] = 'red';
+        document.getElementById(''+(secondItemIndex+1)).style['background-color'] = 'red';
+      }, counter*300);
+      counter++;
+      setTimeout(() => {
+        document.getElementById(''+(firstItemIndex+1)).style.height = secondItemValue + '%';
+        document.getElementById(''+(secondItemIndex+1)).style.height = firstItemValue + '%';
+        document.getElementById(''+(firstItemIndex+1)).style['background-color'] = 'blue';
+        document.getElementById(''+(secondItemIndex+1)).style['background-color'] = 'blue';
+      }, counter*300);
     }
 
     document.querySelector('.sort').addEventListener('click', () => {
