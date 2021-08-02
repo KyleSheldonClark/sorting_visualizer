@@ -9,43 +9,23 @@
     <nav>
       <button type="button" name="button" class="sort">Sort</button>
     </nav>
-    <section>
-      <div id="1">
+    <section id="bars">
 
-      </div>
-      <div id="2">
-
-      </div>
-      <div id="3">
-
-      </div>
-      <div id="4">
-
-      </div>
-      <div id="5">
-
-      </div>
-      <div id="6">
-
-      </div>
-      <div id="7">
-
-      </div>
-      <div id="8">
-
-      </div>
-      <div id="9">
-
-      </div>
-      <div id="10">
-
-      </div>
     </section>
   <script type="text/javascript">
     let counter = 1;
-    let array1 = [44, 31, 32, 78, 72, 59, 95, 71, 89, 98];
-    for (let i = 0; i < array1.length; i++) {
-      document.getElementById(''+(i+1)).style.height = array1[i] + '%';
+    let array1 = [];
+
+    function createArray() {
+      numberOfColumns = Math.floor(Math.random()*100);
+      for (let i = 0; i < numberOfColumns; i++) {
+        array1.push(Math.floor(Math.random()*100));
+        let currentColumn = document.createElement('div');
+        currentColumn.id = i;
+        document.getElementById('bars').appendChild(currentColumn);
+        document.getElementById(i).style.height = array1[i] + '%';
+        document.getElementById(i).style.width = (1/numberOfColumns - 3) + 'vh';
+      }
     }
 
     function bubbleSort(array) {
@@ -56,11 +36,7 @@
         //for every element in the array if the current element's value is greater than the value of the next element swap positions in the array
         for (let i = 0; i < array.length; i++) {
           if (array[i] > array[i+1]) {
-            let firstValue = array[i];
-            let secondValue = array[i+1];
-            let firstItemIndex = i;
-            let secondItemIndex = i+1;
-            swap(array, firstItemIndex, secondItemIndex, firstValue, secondValue);
+            swap(array, i, (i+1), array[i], array[i+1]);
             counter++;
             numberOfChanged++;
           }
@@ -78,18 +54,19 @@
       array[firstItemIndex] = secondItemValue;
       array[secondItemIndex] = firstItemValue;
       setTimeout(() => {
-        document.getElementById(''+(firstItemIndex+1)).style['background-color'] = 'red';
-        document.getElementById(''+(secondItemIndex+1)).style['background-color'] = 'red';
-      }, counter*300);
+        document.getElementById(''+(firstItemIndex)).style['background-color'] = 'red';
+        document.getElementById(''+(secondItemIndex)).style['background-color'] = 'red';
+      }, counter*30);
       counter++;
       setTimeout(() => {
-        document.getElementById(''+(firstItemIndex+1)).style.height = secondItemValue + '%';
-        document.getElementById(''+(secondItemIndex+1)).style.height = firstItemValue + '%';
-        document.getElementById(''+(firstItemIndex+1)).style['background-color'] = 'blue';
-        document.getElementById(''+(secondItemIndex+1)).style['background-color'] = 'blue';
-      }, counter*300);
+        document.getElementById(''+(firstItemIndex)).style.height = secondItemValue + '%';
+        document.getElementById(''+(secondItemIndex)).style.height = firstItemValue + '%';
+        document.getElementById(''+(firstItemIndex)).style['background-color'] = 'blue';
+        document.getElementById(''+(secondItemIndex)).style['background-color'] = 'blue';
+      }, counter*30);
     }
 
+    createArray();
     document.querySelector('.sort').addEventListener('click', () => {
       bubbleSort(array1);
     });

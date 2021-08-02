@@ -21,10 +21,15 @@ button {
 section {
   width: 100vw;
   height: 90vh;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 div {
   background-color: blue;
   width: 9vw;
   display: inline-block;
+  border: 2px solid white;
 }
