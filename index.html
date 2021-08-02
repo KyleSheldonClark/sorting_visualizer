@@ -51,13 +51,16 @@
       let hasChanged = true;
       //iterate over array and sort until one full iteration has occured where no elements have been changed
       do {
+        let counter = 100;
         let numberOfChanged = 0;
         //for every element in the array if the current element's value is greater than the value of the next element swap positions in the array
         for (let i = 0; i < array.length; i++) {
           if (array[i] > array[i+1]) {
             let firstValue = array[i];
-            array[i] = array[i+1];
-            array[i+1] = firstValue;
+            let secondValue = array[i+1];
+            let firstItemIndex = i;
+            let secondItemIndex = i+1;
+            swap(array, firstItemIndex, secondItemIndex, firstValue, secondValue);
             numberOfChanged++;
           }
         }
@@ -65,10 +68,18 @@
           hasChanged = false;
         }
       } while(hasChanged);
-      console.log(array)
-      for (let i = 0; i < array.length; i++) {
-        document.getElementById(''+(i+1)).style.height = array[i] + '%';
-      }
+    //  for (let i = 0; i < array.length; i++) {
+      //  document.getElementById(''+(i+1)).style.height = array[i] + '%';
+      //}
+    }
+
+    function swap(array, firstItemIndex, secondItemIndex, firstItemValue, secondItemValue) {
+      array[firstItemIndex] = secondItemValue;
+      array[secondItemIndex] = firstItemValue;
+      document.getElementById(''+(firstItemIndex+1)).style['background-color'] = 'red';
+      document.getElementById(''+(secondItemIndex+1)).style['background-color'] = 'red';
+      document.getElementById(''+(firstItemIndex+1)).style.height = secondItemValue + '%';
+      document.getElementById(''+(secondItemIndex+1)).style.height = firstItemValue + '%';
     }
 
     document.querySelector('.sort').addEventListener('click', () => {
