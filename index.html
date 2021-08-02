@@ -17,7 +17,9 @@
     let array1 = [];
 
     function createArray() {
+      //choose a random number of columns
       numberOfColumns = Math.floor(Math.random()*100);
+      //fot every column add to array, set a random height, and set width to an equal portion of the parent div
       for (let i = 0; i < numberOfColumns; i++) {
         array1.push(Math.floor(Math.random()*100));
         let currentColumn = document.createElement('div');
@@ -50,20 +52,36 @@
       //}
     }
 
+    function quickSort(array, low, high) {
+      //until every element has been checked
+      if (low < high) {
+        //set index of where to split to the index of the patition's pivot
+        const splitIndex = partition(array, low, high);
+        //quickSort each partition
+        quickSort(array, low, splitIndex-1);
+        quickSort(array, splitIndex+1, high);
+      }
+    }
+
+
+
     function swap(array, firstItemIndex, secondItemIndex, firstItemValue, secondItemValue) {
+      //swap element values in array
       array[firstItemIndex] = secondItemValue;
       array[secondItemIndex] = firstItemValue;
+      //change background color of the elements being checked to red
       setTimeout(() => {
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'red';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'red';
-      }, counter*30);
+      }, counter*10);
       counter++;
+      //update height values of elements on screen and reset background color
       setTimeout(() => {
         document.getElementById(''+(firstItemIndex)).style.height = secondItemValue + '%';
         document.getElementById(''+(secondItemIndex)).style.height = firstItemValue + '%';
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'blue';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'blue';
-      }, counter*30);
+      }, counter*10);
     }
 
     createArray();

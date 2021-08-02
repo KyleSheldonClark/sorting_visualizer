@@ -1,4 +1,4 @@
-array1 = [244, 313, 545, 464, 745, 999, 794, 134, 431, 829, 656, 482, 191, 557, 949]
+let array1 = [980, 313, 545, 464, 745, 999, 794, 134, 431, 829, 656, 482, 191, 557, 949];
 /*compare 5 - 3 5>3 so swap
 [3,5,4,5,...]
 compare 5 - 4 5>4 so swap
@@ -27,5 +27,7 @@ function bubbleSort(array) {
   } while(changed);
   return array;
 }
+
+
 
 console.log(bubbleSort(array1));
