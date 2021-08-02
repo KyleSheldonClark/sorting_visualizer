@@ -9,6 +9,7 @@
     <nav>
       <button type="button" name="button" class="bubble-sort">Bubble Sort</button>
       <button type="button" name="button" class="quick-sort">Quick Sort</button>
+      <button type="button" name="button" class="reset-array">Reset Visualization</button>
     </nav>
     <section id="bars">
 
@@ -16,6 +17,7 @@
   <script type="text/javascript">
     let counter = 1;
     let array1 = [];
+    let array1Copy = [];
 
     function createArray() {
       //choose a random number of columns
@@ -23,6 +25,7 @@
       //fot every column add to array, set a random height, and set width to an equal portion of the parent div
       for (let i = 0; i < numberOfColumns; i++) {
         array1.push(Math.floor(Math.random()*100));
+        array1Copy.push(array1[i]);
         let currentColumn = document.createElement('div');
         currentColumn.id = i;
         document.getElementById('bars').appendChild(currentColumn);
@@ -74,7 +77,6 @@
         if (array[j] < pivot) {
           i++;
           counter++;
-          console.log(j);
           swap(array, i, j, array[i], array[j]);
         }
       }
@@ -104,6 +106,16 @@
       }, counter*10);
     }
 
+    function resetArray() {
+      //reset counter
+      counter = 0;
+      //reset every column to it's original value
+      for (let i = 0; i < array1Copy.length; i++) {
+        document.getElementById(i).style.height = array1Copy[i] + '%';
+        array1[i] = array1Copy[i];
+      }
+    }
+
     createArray();
     document.querySelector('.bubble-sort').addEventListener('click', () => {
       bubbleSort(array1);
@@ -111,6 +123,7 @@
     document.querySelector('.quick-sort').addEventListener('click', () => {
       quickSort(array1, 0, array1.length-1);
     });
+    document.querySelector('.reset-array').addEventListener('click', resetArray);
   </script>
   </body>
 </html>
