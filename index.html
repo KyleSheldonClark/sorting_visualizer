@@ -10,6 +10,7 @@
       <button type="button" name="button" class="bubble-sort">Bubble Sort</button>
       <button type="button" name="button" class="quick-sort">Quick Sort</button>
       <button type="button" name="button" class="reset-array">Reset Visualization</button>
+      <button type="button" name="button" class="new-array">New Graph</button>
     </nav>
     <section id="bars">
 
@@ -116,6 +117,24 @@
       }
     }
 
+    function newArray() {
+      //reset counter
+      counter = 0;
+
+      //remove all columns
+      for (let i = 0; i < array1.length; i++) {
+        let currentElement = document.getElementById(i);
+        currentElement.remove();
+      }
+
+      //reset arrays
+      array1 = [];
+      array1Copy = [];
+
+      //create a new graph
+      createArray();
+    }
+
     createArray();
     document.querySelector('.bubble-sort').addEventListener('click', () => {
       bubbleSort(array1);
@@ -124,6 +143,7 @@
       quickSort(array1, 0, array1.length-1);
     });
     document.querySelector('.reset-array').addEventListener('click', resetArray);
+    document.querySelector('.new-array').addEventListener('click', newArray);
   </script>
   </body>
 </html>
