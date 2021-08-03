@@ -28,6 +28,38 @@ function bubbleSort(array) {
   return array;
 }
 
+function mergeSort(array, low, high) {
+  if (low < high) {
+    let middle = low + Math.floor((high-low)/2);
+    mergeSort(array, low, middle);
+    mergeSort(array, middle+1, high)
+    //merge(array, low, middle, high);
+  }
+}
 
 
-console.log(bubbleSort(array1));
+function selectionSort(array, startIndex) {
+
+  let smallestIndex = startIndex;
+  for (let i = startIndex; i < array.length; i++) {
+    if (array[i] < array[smallestIndex]) {
+      smallestIndex = i;
+    }
+  }
+  //swap(array[startIndex], array[smallestIndex]);
+
+  firstNumber = array[startIndex];
+  array[startIndex] = array[smallestIndex];
+  array[smallestIndex] = firstNumber;
+  console.log(array);
+  if (startIndex+1 > array.length-1) {
+    return;
+  }
+  selectionSort(array, startIndex+1);
+
+}
+
+
+
+//console.log(bubbleSort(array1));
+selectionSort(array1, 0);

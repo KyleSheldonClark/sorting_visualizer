@@ -57,6 +57,18 @@
       //}
     }
 
+    function selectionSort(array, startIndex) {
+      //set default for smallest value in array
+      let smallestValueIndex = startIndex;
+
+      //for every element in array [startIndex...array.length-1] if the element is smaller than the current smallest element replace with the current element
+      for (let i = startIndex; i < array.length-1; i++) {
+        if (array[i] < array[smallestValueIndex]) {
+          smallestValueIndex = i;
+        }
+      }
+    }
+
     function quickSort(array, low, high) {
       //until every element has been checked
       if (low < high) {
