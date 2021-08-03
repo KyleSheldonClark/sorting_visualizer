@@ -8,6 +8,7 @@
   <body>
     <nav>
       <button type="button" name="button" class="bubble-sort">Bubble Sort</button>
+      <button type="button" name="button" class="selection-sort">Selection Sort</button>
       <button type="button" name="button" class="quick-sort">Quick Sort</button>
       <button type="button" name="button" class="reset-array">Reset Visualization</button>
       <button type="button" name="button" class="new-array">New Graph</button>
@@ -158,6 +159,9 @@
     createArray();
     document.querySelector('.bubble-sort').addEventListener('click', () => {
       bubbleSort(array1);
+    });
+    document.querySelector('.selection-sort').addEventListener('click', () => {
+      selectionSort(array1, 0);
     });
     document.querySelector('.quick-sort').addEventListener('click', () => {
       quickSort(array1, 0, array1.length-1);
