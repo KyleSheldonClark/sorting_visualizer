@@ -68,8 +68,13 @@
         }
       }
 
+      //place smallest element at start of array [startIndex...array.length-1]
       swap(array, startIndex, smallestValueIndex, array[startIndex], array[smallestValueIndex]);
-      
+
+      //while start index is valid move array boundary and repeat above
+      if (startIndex+1 < array.length) {
+        selectionSort(array, startIndex+1);
+      }
     }
 
     function quickSort(array, low, high) {
