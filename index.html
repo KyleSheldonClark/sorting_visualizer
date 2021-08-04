@@ -140,6 +140,9 @@
       //save sorted arrays in a variable
       let sortedLeftArray = mergeSort(leftArray);
       let sortedRightArray = mergeSort(rightArray);
+
+      //merge sorted arrays into a sorted combined array
+      return merge(sortedLeftArray, sortedRightArray);
     }
 
     function resetArray() {

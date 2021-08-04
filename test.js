@@ -37,58 +37,6 @@ function mergeSort(array, low, high) {
   }
 }
 
-/*function merge(array, low, middle, high) {
-  let temporaryArray1 = [];
-  let temporaryArray2 = [];
-
-  let completedArray = [];
-
-  for (let i = low; i < middle; i++) {
-    temporaryArray1.push(array[i]);
-  }
-  for (let i = middle+1; i < high; i++) {
-    temporaryArray2.push(array[i]);
-  }
-  let firstNumber = temporaryArray1[0];
-  let secondNumber = temporaryArray2[0];
-
-  let index1 = 0;
-  let index2 = 0;
-
-  while (temporaryArray1.length + temporaryArray2.length > 1) {
-
-  }
-  if (index1 > temporaryArray1.length-1) {
-    index1 = index2+1;
-    firstNumber = temporaryArray2[index1];
-    temporaryArray1Complete = true;
-  } else if (index2 > temporaryArray2.length-1) {
-    index2 = index1+1;
-    secondNumber = temporaryArray1[index2];
-    temporaryArray2Complete = true;
-  } else {
-    firstNumber = temporaryArray1[index1];
-    secondNumber = temporaryArray2[index2];
-  }
-
-  if (firstNumber < secondNumber) {
-    completedArray.push(firstNumber);
-    index1++;
-  } else {
-    completedArray.push(secondNumber);
-    index2++;
-  }
-
-
-  //while (temporaryArray1.length > 0 || temporaryArray2.length > 0) {
-    if (temporaryArray1[0] < temporaryArray2[0]) {
-      //if (temporaryArray1[0] < )
-    }
-  //}
-  console.log('here')
-  console.log(temporaryArray1);
-  console.log(temporaryArray2);
-}*/
 function merge(firstArray, secondArray) {
   let combinedArray = [];
 
