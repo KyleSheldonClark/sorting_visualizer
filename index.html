@@ -115,7 +115,7 @@
       setTimeout(() => {
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'red';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'red';
-      }, counter*10);
+      }, counter*100);
       counter++;
       //update height values of elements on screen and reset background color
       setTimeout(() => {
@@ -123,7 +123,23 @@
         document.getElementById(''+(secondItemIndex)).style.height = firstItemValue + '%';
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'blue';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'blue';
-      }, counter*10);
+      }, counter*100);
+    }
+
+    function mergeSort(array) {
+      //if the length of the array is less than one assume it's trivially sorted
+      if (array.length <= 1) {
+        return array;
+      }
+
+      //split array in half into to smaller arrays
+      let splitIndex = Math.floor(array.length/2);
+      let leftArray = array.slice(0, splitIndex);
+      let rightArray = array.slice(splitIndex);
+
+      //save sorted arrays in a variable
+      let sortedLeftArray = mergeSort(leftArray);
+      let sortedRightArray = mergeSort(rightArray);
     }
 
     function resetArray() {
