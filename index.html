@@ -118,7 +118,7 @@
       setTimeout(() => {
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'red';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'red';
-      }, counter*100);
+      }, counter*10);
       counter++;
       //update height values of elements on screen and reset background color
       setTimeout(() => {
@@ -126,7 +126,7 @@
         document.getElementById(''+(secondItemIndex)).style.height = firstItemValue + '%';
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'blue';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'blue';
-      }, counter*100);
+      }, counter*10);
     }
 
     function mergeSort(array, low, high) {
@@ -164,9 +164,9 @@
 
           //move each element between low and secondArrayStart one place
           for (let i = secondArrayStart; i > low; i--) {
-            array[i] = array[i-1];
+            //array[i] = array[i-1];
+            swap(array, i, i-1, array[i], array[i-1]);
           }
-          console.log('hello')
 
           //move original value of array[secondArrayStart] to start of current range
           array[low] = valueToMove;
@@ -177,7 +177,6 @@
           secondArrayStart++;
         }
       }
-      console.log(array)
     }
 
 
@@ -221,7 +220,6 @@
     });
     document.querySelector('.merge-sort').addEventListener('click', () => {
       mergeSort(array1, 0, array1.length-1);
-      console.log(array1)
     });
     document.querySelector('.reset-array').addEventListener('click', resetArray);
     document.querySelector('.new-array').addEventListener('click', newArray);
