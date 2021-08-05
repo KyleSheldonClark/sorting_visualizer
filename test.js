@@ -28,16 +28,8 @@ function bubbleSort(array) {
   return array;
 }
 
-function mergeSort(array, low, high) {
-  if (low < high) {
-    let middle = low + Math.floor((high-low)/2);
-    mergeSort(array, low, middle);
-    mergeSort(array, middle+1, high)
-    //merge(array, low, middle, high);
-  }
-}
 
-function merge(firstArray, secondArray) {
+/*function merge(firstArray, secondArray) {
   let combinedArray = [];
 
   //array.length equates to falsy if 0 so loop until both first and second arrays are empty
@@ -66,28 +58,51 @@ function merge(firstArray, secondArray) {
   }
   //return the sorted combined array
   return combinedArray;
+}*/
+
+function mergeSort(array, low, high) {
+
+
+  if (low < high) {
+    //split array in half into to smaller arrays
+    let middle = low + Math.floor((high-low)/2);
+
+    //save sorted arrays in a variable
+    mergeSort(array, low, middle);
+    mergeSort(array, middle+1, high);
+
+    merge(array, low, middle, high);
+  }
 }
 
-function mergeSort(array) {
-  //if the length of the array is less than one assume it's trivially sorted
-  if (array.length <= 1) {
-    return array;
+function merge(array, low, middle, high) {
+  let secondArrayStart = middle+1;
+
+  if (array[middle] <= array[secondArrayStart]) {
+    return;
   }
 
-  //split array in half into to smaller arrays
-  let splitIndex = Math.floor(array.length/2);
-  let leftArray = array.slice(0, splitIndex);
-  let rightArray = array.slice(splitIndex);
 
-  //save sorted arrays in a variable
-  let sortedLeftArray = mergeSort(leftArray);
-  let sortedRightArray = mergeSort(rightArray);
+  while (low <= middle && secondArrayStart <= high) {
+    if (array[low] < array[secondArrayStart]) {
+      low++;
+    } else {
+      let valueToMove = array[secondArrayStart];
 
-  //merge sorted arrays into a sorted combined array
-  return merge(sortedLeftArray, sortedRightArray);
+      for (let i = secondArrayStart; i > low; i--) {
+        array[i] = array[i-1];
+      }
+
+
+      array[low] = valueToMove;
+
+      low++;
+      middle++;
+      secondArrayStart++;
+    }
+  }
+  console.log(array);
 }
-
-
 
 function selectionSort(array, startIndex) {
 
@@ -113,7 +128,8 @@ function selectionSort(array, startIndex) {
 }
 
 
-
+console.log(array1.length-1)
 //console.log(bubbleSort(array1));
-console.log(mergeSort(array1));
+console.log(mergeSort(array1, 0, array1.length-1));
+console.log(array1)
 //console.log(selectionSort(array1, 0));

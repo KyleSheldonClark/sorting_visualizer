@@ -10,6 +10,7 @@
       <button type="button" name="button" class="bubble-sort">Bubble Sort</button>
       <button type="button" name="button" class="selection-sort">Selection Sort</button>
       <button type="button" name="button" class="quick-sort">Quick Sort</button>
+      <button type="button" name="button" class="merge-sort">Merge Sort</button>
       <button type="button" name="button" class="reset-array">Reset Visualization</button>
       <button type="button" name="button" class="new-array">New Graph</button>
     </nav>
@@ -20,6 +21,8 @@
     let counter = 1;
     let array1 = [];
     let array1Copy = [];
+
+    let coolCounter = 0;
 
     function createArray() {
       //choose a random number of columns
@@ -126,24 +129,57 @@
       }, counter*100);
     }
 
-    function mergeSort(array) {
-      //if the length of the array is less than one assume it's trivially sorted
-      if (array.length <= 1) {
-        return array;
+    function mergeSort(array, low, high) {
+
+      //split given array until it has a length of 1
+      if (low < high) {
+        //set splitIndex to middle of given array range
+        let splitIndex = low + Math.floor((high-low)/2);
+
+        //split both halves of given array range
+        mergeSort(array, low, splitIndex);
+        mergeSort(array, splitIndex+1, high);
+
+        //merge given arrays into one combined sorted array
+        merge(array, low, splitIndex, high);
       }
-
-      //split array in half into to smaller arrays
-      let splitIndex = Math.floor(array.length/2);
-      let leftArray = array.slice(0, splitIndex);
-      let rightArray = array.slice(splitIndex);
-
-      //save sorted arrays in a variable
-      let sortedLeftArray = mergeSort(leftArray);
-      let sortedRightArray = mergeSort(rightArray);
-
-      //merge sorted arrays into a sorted combined array
-      return merge(sortedLeftArray, sortedRightArray);
     }
+
+    function merge(array, low, splitIndex, high) {
+      let secondArrayStart = splitIndex+1;
+
+      //return if given arrays are already sorted
+      if (array[splitIndex] <= array[secondArrayStart]) {
+        return;
+      }
+      //while combined array is unsorted
+      while (low <= splitIndex && secondArrayStart <= high) {
+
+        //if both elements are already in the right place increment pointer
+        if (array[low] < array[secondArrayStart]) {
+          low++;
+        } else {
+          //set current value of array[secondArrayStart] to variable
+          let valueToMove = array[secondArrayStart];
+
+          //move each element between low and secondArrayStart one place
+          for (let i = secondArrayStart; i > low; i--) {
+            array[i] = array[i-1];
+          }
+          console.log('hello')
+
+          //move original value of array[secondArrayStart] to start of current range
+          array[low] = valueToMove;
+
+          //update pointers
+          low++;
+          splitIndex++;
+          secondArrayStart++;
+        }
+      }
+      console.log(array)
+    }
+
 
     function resetArray() {
       //reset counter
@@ -182,6 +218,10 @@
     });
     document.querySelector('.quick-sort').addEventListener('click', () => {
       quickSort(array1, 0, array1.length-1);
+    });
+    document.querySelector('.merge-sort').addEventListener('click', () => {
+      mergeSort(array1, 0, array1.length-1);
+      console.log(array1)
     });
     document.querySelector('.reset-array').addEventListener('click', resetArray);
     document.querySelector('.new-array').addEventListener('click', newArray);
