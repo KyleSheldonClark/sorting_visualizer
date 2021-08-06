@@ -26,7 +26,7 @@
 
     function createArray() {
       //choose a random number of columns
-      numberOfColumns = Math.floor(Math.random()*100);
+      numberOfColumns = Math.floor(Math.random()*200);
       //fot every column add to array, set a random height, and set width to an equal portion of the parent div
       for (let i = 0; i < numberOfColumns; i++) {
         array1.push(Math.floor(Math.random()*100));
@@ -118,7 +118,7 @@
       setTimeout(() => {
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'red';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'red';
-      }, counter*10);
+      }, counter*5);
       counter++;
       //update height values of elements on screen and reset background color
       setTimeout(() => {
@@ -126,7 +126,7 @@
         document.getElementById(''+(secondItemIndex)).style.height = firstItemValue + '%';
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'blue';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'blue';
-      }, counter*10);
+      }, counter*5);
     }
 
     function mergeSort(array, low, high) {
