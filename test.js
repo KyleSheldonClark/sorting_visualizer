@@ -161,10 +161,26 @@ function rightChild(index)  {
   return (index*2)+2;
 }
 
+function heapifyUp(array, index) {
+  let currentIndex = index;
+  let parentIndex = parent(index);
+  console.log(parentIndex)
+
+  while (currentIndex > 0 && array[currentIndex] > array[parentIndex]) {
+    let firstValue = array[currentIndex]
+    array[currentIndex] = array[parentIndex];
+    array[parentIndex] = firstValue;
+
+    currentIndex = parentIndex;
+    parentIndex = parent(parentIndex);
+  }
+  console.log(array);
+}
+
 
 //console.log(array1.length-1)
 //console.log(bubbleSort(array1));
 //console.log(mergeSort(array1, 0, array1.length-1));
 //console.log(array1)
 //console.log(selectionSort(array1, 0));
-heapSort(array1);
+heapifyUp(array1, 14);
