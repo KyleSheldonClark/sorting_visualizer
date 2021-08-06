@@ -127,9 +127,44 @@ function selectionSort(array, startIndex) {
 
 }
 
+//parent = Math.floor((index-1)/2)
+//children = (index*2)+1 && (index*2)+2
+function heapSort(array) {
+  let index = 0;
+  let childIndex = (index*2)+1;
 
-console.log(array1.length-1)
+  if (array[childIndex] > array[index]) {
+    let firstValue = array[childIndex]
+    array[childIndex] = array[index];
+    array[index] = firstValue;
+  }
+  console.log(array)
+}
+
+//returns true if given node has no children
+function isLeaf(index, numberOfNodes) {
+  return (index >= Math.floor(numberOfNodes/2) && index <= numberOfNodes-1);
+}
+
+//returns parent of a given node
+function parent(index) {
+  return Math.floor((index-1)/2);
+}
+
+//returns left child of a given node
+function leftChild(index)  {
+  return (index*2)+1;
+}
+
+//returns right child of a given node
+function rightChild(index)  {
+  return (index*2)+2;
+}
+
+
+//console.log(array1.length-1)
 //console.log(bubbleSort(array1));
-console.log(mergeSort(array1, 0, array1.length-1));
-console.log(array1)
+//console.log(mergeSort(array1, 0, array1.length-1));
+//console.log(array1)
 //console.log(selectionSort(array1, 0));
+heapSort(array1);
