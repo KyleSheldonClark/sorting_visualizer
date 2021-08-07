@@ -177,6 +177,31 @@ function heapifyUp(array, index) {
   console.log(array);
 }
 
+function heapifyDown(array, index) {
+  if (isLeaf(index, array.length-1)) {
+    let leftChildIndex = leftChild(index);
+    let rightChildIndex = rightChild(index);
+
+    let largestIndex = index;
+
+    if (array[leftChildIndex] > array[largestIndex]) {
+      largestIndex = leftChildIndex;
+    }
+
+    if (array[rightChildIndex] > array[largestIndex]) {
+      largestIndex = rightChildIndex;
+    }
+
+    if (largestIndex != index) {
+      let firstValue = array[index]
+      array[index] = array[largestIndex];
+      array[largestIndex] = firstValue;
+
+      heapifyDown(largestIndex);
+    }
+  }
+}
+
 
 //console.log(array1.length-1)
 //console.log(bubbleSort(array1));
