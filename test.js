@@ -202,10 +202,17 @@ function heapifyDown(array, index) {
   }
 }
 
+function buildHeap(array) {
+  for (let i = Math.floor(array.length / 2); i >= 0; i--) {
+    heapifyDown(array, i)
+  }
+}
+
 
 //console.log(array1.length-1)
 //console.log(bubbleSort(array1));
 //console.log(mergeSort(array1, 0, array1.length-1));
 //console.log(array1)
 //console.log(selectionSort(array1, 0));
-heapifyUp(array1, 14);
+buildHeap(array1);
+console.log(array1);
