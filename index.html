@@ -63,6 +63,11 @@
           hasChanged = false;
         }
       } while(hasChanged);
+      //enable array manipulation when visualization is complete
+      setTimeout(() => {
+        document.querySelector('.reset-array').disabled = false;
+        document.querySelector('.slider').disabled = false;
+      }, counter*5);
     //  for (let i = 0; i < array.length; i++) {
       //  document.getElementById(''+(i+1)).style.height = array[i] + '%';
       //}
@@ -85,8 +90,13 @@
       //while start index is valid move array boundary and repeat above
       if (startIndex+1 < array.length) {
         selectionSort(array, startIndex+1);
+      } else if (startIndex+1 === array.length)
+        //enable array manipulation when visualization is complete
+        setTimeout(() => {
+          document.querySelector('.reset-array').disabled = false;
+          document.querySelector('.slider').disabled = false;
+        }, counter*5);
       }
-    }
 
     function quickSort(array, low, high) {
       //until every element has been checked
@@ -96,6 +106,14 @@
         //quickSort each partition
         quickSort(array, low, splitIndex-1);
         quickSort(array, splitIndex+1, high);
+
+        //enable array manipulation when visualization is complete
+        if (low === 0 && high === array.length-1) {
+          setTimeout(() => {
+            document.querySelector('.reset-array').disabled = false;
+            document.querySelector('.slider').disabled = false;
+          }, counter*5);
+        }
       }
     }
 
@@ -138,7 +156,6 @@
     }
 
     function mergeSort(array, low, high) {
-
       //split given array until it has a length of 1
       if (low < high) {
         //set splitIndex to middle of given array range
@@ -150,6 +167,14 @@
 
         //merge given arrays into one combined sorted array
         merge(array, low, splitIndex, high);
+
+        //enable array manipulation when visualization is complete
+        if (low === 0 && high === array.length-1) {
+          setTimeout(() => {
+            document.querySelector('.reset-array').disabled = false;
+            document.querySelector('.slider').disabled = false;
+          }, counter*5);
+        }
       }
     }
 
@@ -220,15 +245,23 @@
 
     createArray(slider.value);
     document.querySelector('.bubble-sort').addEventListener('click', () => {
+      document.querySelector('.reset-array').disabled = true;
+      document.querySelector('.slider').disabled = true;
       bubbleSort(array1);
     });
     document.querySelector('.selection-sort').addEventListener('click', () => {
+      document.querySelector('.reset-array').disabled = true;
+      document.querySelector('.slider').disabled = true;
       selectionSort(array1, 0);
     });
     document.querySelector('.quick-sort').addEventListener('click', () => {
+      document.querySelector('.reset-array').disabled = true;
+      document.querySelector('.slider').disabled = true;
       quickSort(array1, 0, array1.length-1);
     });
     document.querySelector('.merge-sort').addEventListener('click', () => {
+      document.querySelector('.reset-array').disabled = true;
+      document.querySelector('.slider').disabled = true;
       mergeSort(array1, 0, array1.length-1);
     });
     document.querySelector('.reset-array').addEventListener('click', resetArray);
