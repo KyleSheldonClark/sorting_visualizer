@@ -29,9 +29,9 @@
 
     let coolCounter = 0;
 
-    function createArray() {
+    function createArray(numberOfColumns) {
       //choose a random number of columns
-      numberOfColumns = Math.floor(Math.random()*200);
+      //numberOfColumns = Math.floor(Math.random()*200);
       //fot every column add to array, set a random height, and set width to an equal portion of the parent div
       for (let i = 0; i < numberOfColumns; i++) {
         array1.push(Math.floor(Math.random()*100));
@@ -195,7 +195,7 @@
       }
     }
 
-    function newArray() {
+    function newArray(numberOfColumns) {
       //reset counter
       counter = 0;
 
@@ -210,10 +210,10 @@
       array1Copy = [];
 
       //create a new graph
-      createArray();
+      createArray(numberOfColumns);
     }
 
-    createArray();
+    createArray(95);
     document.querySelector('.bubble-sort').addEventListener('click', () => {
       bubbleSort(array1);
     });
@@ -228,6 +228,12 @@
     });
     document.querySelector('.reset-array').addEventListener('click', resetArray);
     document.querySelector('.new-array').addEventListener('click', newArray);
+
+    let slider = document.querySelector('.slider');
+    slider.oninput = function() {
+      console.log(slider.value)
+      newArray(slider.value);
+    }
   </script>
   </body>
 </html>
