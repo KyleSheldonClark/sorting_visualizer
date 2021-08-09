@@ -15,7 +15,7 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  background-image: linear-gradient(rgba(106, 0, 244, 0.8), rgba(106, 0, 244, 0.6));
+  background-image: linear-gradient(rgba(234, 105, 139, 0.95), rgba(234, 105, 139, 0.6));
 }
 
 button {
@@ -24,11 +24,12 @@ button {
   color: white;
   width: 10vw;
   height: 6vh;
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(106, 0, 244, 0.15);
   border-radius: 0.3rem;
   font-size: 1rem;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
   font-family: 'Roboto';
+  box-shadow: 1px 1px rgba(234, 105, 139, 0.9);
 }
 
 button:hover {
@@ -44,10 +45,41 @@ section {
   justify-content: center;
 }
 
-div {
-  background-image: linear-gradient(rgba(234, 105, 139, 0.6), rgba(234, 105, 139, 0.3));
+#bars div {
+  background-image: linear-gradient(rgba(234, 105, 139, 0.6), rgba(234, 105, 139, 0.2));
   width: 9vw;
   display: inline-block;
   border: 1px solid rgba(177, 0, 232, 0.3);
-  border-radius: 0rem;
+  border-radius: 0.2rem;
+}
+
+.slide-container {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4vh;
+  outline: none;
+  background: rgba(234, 105, 139, 0.6);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 5vh;
+  height: 5vh;
+  background: #04AA6D;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 5vh;
+  height: 5vh;
+  background: #04AA6D;
+  border-radius: 100%;
+  cursor: pointer;
 }
