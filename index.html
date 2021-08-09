@@ -9,12 +9,15 @@
   </head>
   <body>
     <nav>
-      <button type="button" name="button" class="new-array">New Graph</button>
-      <button type="button" name="button" class="reset-array">Reset Visualization</button>
-      <button type="button" name="button" class="bubble-sort">Bubble Sort</button>
-      <button type="button" name="button" class="selection-sort">Selection Sort</button>
-      <button type="button" name="button" class="quick-sort">Quick Sort</button>
-      <button type="button" name="button" class="merge-sort">Merge Sort</button>
+      <div class="algorithms">
+        <button type="button" name="button" class="bubble-sort">Bubble Sort</button>
+        <button type="button" name="button" class="selection-sort">Selection Sort</button>
+        <button type="button" name="button" class="quick-sort">Quick Sort</button>
+        <button type="button" name="button" class="merge-sort">Merge Sort</button>
+      </div>
+      <div class="graph-buttons">
+        <button type="button" name="button" class="reset-array">Reset Visualization</button>
+      </div>
     </nav>
     <div class="slide-container">
       <input type="range" min="10" max="200" value="95" class="slider">
@@ -229,7 +232,6 @@
       mergeSort(array1, 0, array1.length-1);
     });
     document.querySelector('.reset-array').addEventListener('click', resetArray);
-    document.querySelector('.new-array').addEventListener('click', newArray);
 
     slider.oninput = function() {
       newArray(slider.value);
