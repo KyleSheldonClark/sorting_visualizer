@@ -16,12 +16,12 @@
       <button type="button" name="button" class="quick-sort">Quick Sort</button>
       <button type="button" name="button" class="merge-sort">Merge Sort</button>
     </nav>
-    <section id="bars">
-
-    </section>
     <div class="slide-container">
       <input type="range" min="10" max="200" value="95" class="slider">
     </div>
+    <section id="bars">
+
+    </section>
   <script type="text/javascript">
     let counter = 1;
     let array1 = [];
@@ -213,7 +213,9 @@
       createArray(numberOfColumns);
     }
 
-    createArray(95);
+    let slider = document.querySelector('.slider');
+
+    createArray(slider.value);
     document.querySelector('.bubble-sort').addEventListener('click', () => {
       bubbleSort(array1);
     });
@@ -229,9 +231,7 @@
     document.querySelector('.reset-array').addEventListener('click', resetArray);
     document.querySelector('.new-array').addEventListener('click', newArray);
 
-    let slider = document.querySelector('.slider');
     slider.oninput = function() {
-      console.log(slider.value)
       newArray(slider.value);
     }
   </script>
