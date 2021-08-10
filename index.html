@@ -79,9 +79,16 @@
 
       //find smallest element in array [startIndex...array.length-1]
       for (let i = startIndex; i < array.length; i++) {
+        setTimeout(() => {
+          document.getElementById(''+(i-1)).style['background-color'] = '';
+        }, counter*5);
         if (array[i] < array[smallestValueIndex]) {
           smallestValueIndex = i;
         }
+        setTimeout(() => {
+          document.getElementById(''+(i)).style['background-color'] = 'red';
+        }, counter*5);
+        counter++;
       }
 
       //place smallest element at start of array [startIndex...array.length-1]
@@ -118,7 +125,7 @@
       for (let i = low; i <= high; i++) {
         setTimeout(() => {
           document.getElementById(''+(i)).style['background-color'] = 'green';
-        }, counter*50);
+        }, counter*5);
       }
     }
 
@@ -139,7 +146,7 @@
       swap(array, i+1, high, array[i+1], array[high]);
       setTimeout(() => {
         document.getElementById(''+(i+1)).style['background-color'] = 'green';
-      }, counter*50);
+      }, counter*5);
 
       //return new pivot index
       return (i+1);
@@ -153,7 +160,7 @@
       setTimeout(() => {
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'red';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'red';
-      }, counter*50);
+      }, counter*5);
       counter++;
       //update height values of elements on screen and reset background color
       setTimeout(() => {
@@ -161,7 +168,7 @@
         document.getElementById(''+(secondItemIndex)).style.height = firstItemValue + '%';
         document.getElementById(''+(firstItemIndex)).style['background-color'] = '';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = '';
-      }, counter*50);
+      }, counter*5);
     }
 
     function mergeSort(array, low, high) {
@@ -228,6 +235,7 @@
       //reset every column to it's original value
       for (let i = 0; i < array1Copy.length; i++) {
         document.getElementById(i).style.height = array1Copy[i] + '%';
+        document.getElementById(''+(i)).style['background-color'] = '';
         array1[i] = array1Copy[i];
       }
     }
