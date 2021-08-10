@@ -115,6 +115,11 @@
           }, counter*5);
         }
       }
+      for (let i = low; i <= high; i++) {
+        setTimeout(() => {
+          document.getElementById(''+(i)).style['background-color'] = 'green';
+        }, counter*50);
+      }
     }
 
     function partition(array, low, high) {
@@ -132,6 +137,10 @@
 
       //place pivot at index + 1 of last element smaller than pivot
       swap(array, i+1, high, array[i+1], array[high]);
+      setTimeout(() => {
+        document.getElementById(''+(i+1)).style['background-color'] = 'green';
+      }, counter*50);
+
       //return new pivot index
       return (i+1);
     }
@@ -144,7 +153,7 @@
       setTimeout(() => {
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'red';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'red';
-      }, counter*5);
+      }, counter*50);
       counter++;
       //update height values of elements on screen and reset background color
       setTimeout(() => {
@@ -152,7 +161,7 @@
         document.getElementById(''+(secondItemIndex)).style.height = firstItemValue + '%';
         document.getElementById(''+(firstItemIndex)).style['background-color'] = '';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = '';
-      }, counter*5);
+      }, counter*50);
     }
 
     function mergeSort(array, low, high) {
