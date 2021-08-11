@@ -30,8 +30,9 @@
     let array1 = [];
     let array1Copy = [];
 
-    let coolCounter = 0;
 
+    let slider = document.querySelector('.slider');
+    let counterMultiplier = slider.value;
     function createArray(numberOfColumns) {
       //choose a random number of columns
       //numberOfColumns = Math.floor(Math.random()*200);
@@ -67,7 +68,7 @@
       setTimeout(() => {
         document.querySelector('.reset-array').disabled = false;
         document.querySelector('.slider').disabled = false;
-      }, counter*5);
+      }, counter*counterMultiplier);
     //  for (let i = 0; i < array.length; i++) {
       //  document.getElementById(''+(i+1)).style.height = array[i] + '%';
       //}
@@ -81,13 +82,13 @@
       for (let i = startIndex; i < array.length; i++) {
         setTimeout(() => {
           document.getElementById(''+(i-1)).style['background-color'] = '';
-        }, counter*5);
+        }, counter*counterMultiplier);
         if (array[i] < array[smallestValueIndex]) {
           smallestValueIndex = i;
         }
         setTimeout(() => {
           document.getElementById(''+(i)).style['background-color'] = 'red';
-        }, counter*5);
+        }, counter*counterMultiplier);
         counter++;
       }
 
@@ -102,7 +103,7 @@
         setTimeout(() => {
           document.querySelector('.reset-array').disabled = false;
           document.querySelector('.slider').disabled = false;
-        }, counter*5);
+        }, counter*counterMultiplier);
       }
 
     function quickSort(array, low, high) {
@@ -119,13 +120,13 @@
           setTimeout(() => {
             document.querySelector('.reset-array').disabled = false;
             document.querySelector('.slider').disabled = false;
-          }, counter*5);
+          }, counter*counterMultiplier);
         }
       }
       for (let i = low; i <= high; i++) {
         setTimeout(() => {
           document.getElementById(''+(i)).style['background-color'] = 'green';
-        }, counter*5);
+        }, counter*counterMultiplier);
       }
     }
 
@@ -146,7 +147,7 @@
       swap(array, i+1, high, array[i+1], array[high]);
       setTimeout(() => {
         document.getElementById(''+(i+1)).style['background-color'] = 'green';
-      }, counter*5);
+      }, counter*counterMultiplier);
 
       //return new pivot index
       return (i+1);
@@ -160,7 +161,7 @@
       setTimeout(() => {
         document.getElementById(''+(firstItemIndex)).style['background-color'] = 'red';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = 'red';
-      }, counter*5);
+      }, counter*counterMultiplier);
       counter++;
       //update height values of elements on screen and reset background color
       setTimeout(() => {
@@ -168,7 +169,7 @@
         document.getElementById(''+(secondItemIndex)).style.height = firstItemValue + '%';
         document.getElementById(''+(firstItemIndex)).style['background-color'] = '';
         document.getElementById(''+(secondItemIndex)).style['background-color'] = '';
-      }, counter*5);
+      }, counter*counterMultiplier);
     }
 
     function mergeSort(array, low, high) {
@@ -189,7 +190,7 @@
           setTimeout(() => {
             document.querySelector('.reset-array').disabled = false;
             document.querySelector('.slider').disabled = false;
-          }, counter*5);
+          }, counter*counterMultiplier);
         }
       }
     }
@@ -258,7 +259,6 @@
       createArray(numberOfColumns);
     }
 
-    let slider = document.querySelector('.slider');
 
     createArray(slider.value);
     document.querySelector('.bubble-sort').addEventListener('click', () => {
@@ -284,6 +284,7 @@
     document.querySelector('.reset-array').addEventListener('click', resetArray);
 
     slider.oninput = function() {
+      counterMultiplier = slider.value;
       newArray(slider.value);
     }
   </script>
