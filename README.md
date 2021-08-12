@@ -1,1 +1,5 @@
-# sorting_visualizer
+Sorting Visualizer
+==================
+
+Bubble Sort
+------------
