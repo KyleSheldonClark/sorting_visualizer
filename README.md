@@ -16,3 +16,5 @@ Quicksort
 Marge Sort
 -----------
 - Merge Sort is also a divide-and-conquer sorting algorithm. A given input array is divided in two halves, then the algorithm calls itself for both halves, and merges the two sorted halves. The merge operation is a key process that assumes both given arrays are sorted and merges the two sub-arrays into one.
+
+- Merge Sort has a time complexity of O(n*log n) in best, worst, and average cases as merge sort always divides the array in two halves and takes linear time to merge the two halves.
